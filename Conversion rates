@@ -1,13 +1,13 @@
 SELECT 
-ws.device_type,
-COUNT(DISTINCT ws.website_session_id) AS sessions,
-COUNT(DISTINCT o.order_id) AS orders,
-ROUND((COUNT(DISTINCT o.order_id) / COUNT(DISTINCT ws.website_session_id)) * 100, 2) AS session_to_order_conv_rt
+  ws.device_type,
+  COUNT(DISTINCT ws.website_session_id) AS sessions,
+  COUNT(DISTINCT o.order_id) AS orders,
+  ROUND((COUNT(DISTINCT o.order_id) / COUNT(DISTINCT ws.website_session_id)) * 100, 2) AS session_to_order_conv_rt
 FROM website_sessions ws
 LEFT JOIN orders o 
-ON o.website_session_id = ws.website_session_id
+  ON o.website_session_id = ws.website_session_id
 WHERE
-ws.created_at < ‘2012–05–11’
-AND ws.utm_source = ‘gsearch’
-AND utm_campaign = ‘nonbrand’
+  ws.created_at < ‘2012–05–11’
+  AND ws.utm_source = ‘gsearch’
+  AND utm_campaign = ‘nonbrand’
 GROUP BY 1;
