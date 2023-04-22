@@ -15,5 +15,5 @@ SELECT browse_date,
    1.0 * SUM(is_checkout) / COUNT(user_id) AS 'browse_to_checkout',
    1.0 * SUM(is_purchase) / SUM(is_checkout) AS 'checkout_to_purchase'
 FROM funnels
-group by browse_date
-order by browse_date;
+ORDER BY browse_date
+GROUP BY browse_date;
